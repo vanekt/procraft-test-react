@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './main.scss';
 
 class Hello extends React.Component {
     render() {
-        return <p>Hello React!</p>
+        return (
+            <div>
+                <p>Hello React!</p>
+            </div>
+        )
     }
 }
 

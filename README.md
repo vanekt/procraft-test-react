@@ -1,3 +1,4 @@
-- npm install
-- npm install -g webpack-dev-server
-- npm start
+- `npm install`
+- `npm install -g webpack-dev-server`
+- `npm start`
+- http://localhost:8080/
