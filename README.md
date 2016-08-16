@@ -1,0 +1,3 @@
+- npm install
+- npm install -g webpack-dev-server
+- npm start
