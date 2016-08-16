@@ -1,6 +1,6 @@
 import React from 'react'
 import Autosuggest from 'react-autosuggest'
-import { match as matchProfessions } from '../models/profession.jsx'
+import { fetchData, match as matchProfessions } from '../models/profession.jsx'
 
 export class Profession extends React.Component {
     constructor() {
@@ -21,21 +21,16 @@ export class Profession extends React.Component {
             isLoading: true
         });
 
-        // Fake an AJAX call
-        setTimeout(() => {
-            const suggestions = matchProfessions(value);
-
-            if (value === this.state.value) {
-                this.setState({
-                    isLoading: false,
-                    suggestions
-                });
-            } else { // Ignore suggestions if input value changed
-                this.setState({
-                    isLoading: false
-                });
-            }
-        }, 2000);
+        fetchData('profession.json')
+            .then(response => JSON.parse(response)['items'])
+            .then(items => matchProfessions(value, items))
+            .then(suggestions => {
+                if (value === this.state.value) {
+                    this.setState({isLoading: false, suggestions});
+                } else {
+                    this.setState({isLoading: false});
+                }
+            });
     }
 
     onChange(event, { newValue }) {

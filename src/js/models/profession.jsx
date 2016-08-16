@@ -1,21 +1,24 @@
-const professions = [
-    { id: 1, name: "Автомеханик" },
-    { id: 2, name: "Адвокат" },
-    { id: 3, name: "Бухгалтер" },
-    { id: 4, name: "Визажист" },
-    { id: 5, name: "Грузчик" },
-    { id: 6, name: "Дантист" },
-    { id: 7, name: "Муж на час" },
-    { id: 8, name: "Парикмахер" },
-    { id: 9, name: "Парикмахер-Визажист" },
-    { id: 10, name: "Программист" },
-    { id: 11, name: "Садовник" },
-    { id: 12, name: "Сантехник" },
-    { id: 13, name: "Телохранитель" },
-    { id: 14, name: "Частный детектив" }
-];
+export function fetchData(url) {
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onload = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    resolve(xhr.responseText);
+                } else {
+                    reject('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+                }
+            }
+        };
+        xhr.onerror = function () {
+            reject('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+        };
+        xhr.send(null);
+    });
+}
 
-export function match(value) {
+export function match(value, professions) {
     const escapedValue = escapeRegexCharacters(value.trim());
 
     if (escapedValue === '') {
@@ -24,7 +27,7 @@ export function match(value) {
 
     const regex = new RegExp('^' + escapedValue, 'i');
 
-    return professions.filter(language => regex.test(language.name));
+    return professions.filter(profession => regex.test(profession.name));
 }
 
 function escapeRegexCharacters(str) {
