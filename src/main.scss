@@ -1,7 +1,17 @@
-p {
-  color: red;
+.autocomplete-items-wrapper {
+  border: 1px solid #000;
+  border-radius: 0 0 5px 5px;
+  padding: 5px;
+  box-sizing: content-box;
+  cursor: pointer;
 }
-
-div {
-  display: flex;
+.input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 3px;
+}
+.custom-class-item {
+  &:hover {
+    background-color: #cccccc;
+  }
 }
