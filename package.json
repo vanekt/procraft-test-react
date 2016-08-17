@@ -14,6 +14,7 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
+    "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
     "html-webpack-plugin": "^2.22.0",
     "node-sass": "^3.8.0",
@@ -23,7 +24,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --hot --inline --content-base build/"
+    "start": "npm install && webpack-dev-server --hot --inline --content-base build/"
   },
   "author": "Ivan Tkachenko",
   "license": "ISC"

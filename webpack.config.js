@@ -1,5 +1,7 @@
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack'),
+    path = require('path'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/js/app.jsx',
@@ -11,7 +13,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './src/index.html'
-        })
+        }),
+        new CopyWebpackPlugin([
+            { context: 'src', from: '**/*.json'}
+        ])
     ],
     module: {
         loaders: [
