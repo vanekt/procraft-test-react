@@ -16,7 +16,7 @@ module.exports = {
             template: './src/index.html'
         }),
         new CopyWebpackPlugin([
-            { context: 'src', from: '**/*.json'}
+            { from: 'src/**/*.json', to: 'json', flatten: true }
         ])
     ],
     module: {
