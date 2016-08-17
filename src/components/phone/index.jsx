@@ -8,17 +8,27 @@ var countries = [
 ];
 
 export class Phone extends React.Component {
-    render() {
+    constructor() {
+        super();
 
+        this.state = {
+            selected: countries[0]
+        };
+
+        this.dropDownOnSelectCallback = this.dropDownOnSelectCallback.bind(this);
+    }
+
+    render() {
         return (
-            <div>
-                <div>
-                    {/*<img src="img/phone/img/32/Russia.png" alt />*/}
-                </div>
-                <DropDown list={countries} selected={countries[0]} />
-                <input defaultValue={'+7'} />
+            <div className="phone-input">
+                <DropDown list={countries} selected={this.state.selected} onSelectCallback={this.dropDownOnSelectCallback} />
+                <input value={this.state.selected.phoneCode} />
                 <input placeholder="929 777 1234" />
             </div>
         );
+    }
+
+    dropDownOnSelectCallback(item) {
+        this.setState({selected: item});
     }
 }

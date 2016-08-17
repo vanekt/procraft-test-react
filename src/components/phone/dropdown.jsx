@@ -19,6 +19,7 @@ export default class DropDown extends React.Component {
 
     select(item) {
         this.setState({ selected: item });
+        this.props.onSelectCallback(item);
     }
 
     show() {
@@ -32,27 +33,32 @@ export default class DropDown extends React.Component {
     }
 
     render() {
-        return <div className={"dropdown-container" + (this.state.listVisible ? " show" : "")}>
-            <div className={"dropdown-display" + (this.state.listVisible ? " clicked": "")} onClick={this.show}>
-                <span style={{ color: this.state.selected.hex }}>{this.state.selected.name}</span>
-                <i className="fa fa-angle-down"></i>
-            </div>
-            <div className="dropdown-list">
-                <div>
-                    {this.renderListItems()}
+        return (
+            <div className={"phone-input__dropdown-container"}>
+                <div className={"phone-input__dropdown-display" + (this.state.listVisible ? "--clicked": "")} onClick={this.show}>
+                    <img src={'assets/phone/img/32/' + this.state.selected.img} alt={this.state.selected.name} />
+                    <i className="fa fa-angle-down"></i>
+                </div>
+                <div className={"phone-input__dropdown-list" + (this.state.listVisible ? "--show" : "")}>
+                    <div>
+                        {this.renderListItems()}
+                    </div>
                 </div>
             </div>
-        </div>;
+        );
     }
 
     renderListItems() {
         var items = [];
         for (var i = 0; i < this.props.list.length; i++) {
             var item = this.props.list[i];
-            items.push(<div key={item.abbr} onClick={this.select.bind(null, item)}>
-                <span>{item.name}</span>
-            </div>);
+            items.push(
+                <div key={item.abbr} onClick={this.select.bind(null, item)} className="phone-input__dropdown-list-item">
+                    <img src={'assets/phone/img/32/' + item.img} alt={item.name} />
+                </div>
+            );
         }
+
         return items;
     }
 }

@@ -54,17 +54,28 @@ body {
   }
 }
 
-
-.dropdown-container {
-  &.show > .dropdown-list {
-    display: block;
+.phone-input {
+  &__dropdown-container {
+    width: 100px;
+    background-color: #ccc;
+    cursor: pointer;
   }
 
-  .dropdown-list {
+  &__dropdown-display {
+
+  }
+
+  &__dropdown-list {
     float: left;
     width: 100%;
     position: relative;
-    width: 100%;
     display: none;
+    &--show {
+      display: block;
+    }
+  }
+
+  &__dropdown-list-item {
+    background-color: #ccc;
   }
 }

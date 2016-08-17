@@ -21,7 +21,7 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             { from: 'src/**/*.json', to: 'json', flatten: true },
-            { context: 'src/components', from: '**/*.png', to: 'img' }
+            { context: 'src/components', from: '**/*.png', to: 'assets' }
         ])
     ],
     module: {
