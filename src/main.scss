@@ -1,56 +1,55 @@
-@import './css/normalize.scss';
-
-.react-autosuggest {
-  &__container {
-    position: relative;
-    &--open .react-autosuggest__input {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-    &--open .react-autosuggest__suggestions-container {
-      display: block;
-      position: absolute;
-      top: 51px;
-      width: 280px;
-      border: 1px solid #aaa;
-      background-color: #fff;
-      font-family: Helvetica, sans-serif;
-      font-weight: 300;
-      font-size: 16px;
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
-      z-index: 2;
-    }
-  }
-  &__input {
-    width: 240px;
-    height: 30px;
-    padding: 10px 20px;
-    font-family: Helvetica, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    &:focus {
-      outline: none;
-    }
-  }
-  &__suggestions-container {
-    display: none;
-  }
-  &__suggestions-list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-  &__suggestion {
-    cursor: pointer;
-    padding: 10px 20px;
-    &--focused {
-      background-color: #ddd;
-    }
-  }
-}
+//
+//.react-autosuggest {
+//  &__container {
+//    position: relative;
+//    &--open .react-autosuggest__input {
+//      border-bottom-left-radius: 0;
+//      border-bottom-right-radius: 0;
+//    }
+//    &--open .react-autosuggest__suggestions-container {
+//      display: block;
+//      position: absolute;
+//      top: 51px;
+//      width: 280px;
+//      border: 1px solid #aaa;
+//      background-color: #fff;
+//      font-family: Helvetica, sans-serif;
+//      font-weight: 300;
+//      font-size: 16px;
+//      border-bottom-left-radius: 4px;
+//      border-bottom-right-radius: 4px;
+//      z-index: 2;
+//    }
+//  }
+//  &__input {
+//    width: 240px;
+//    height: 30px;
+//    padding: 10px 20px;
+//    font-family: Helvetica, sans-serif;
+//    font-weight: 300;
+//    font-size: 16px;
+//    border: 1px solid #aaa;
+//    border-radius: 4px;
+//    &:focus {
+//      outline: none;
+//    }
+//  }
+//  &__suggestions-container {
+//    display: none;
+//  }
+//  &__suggestions-list {
+//    margin: 0;
+//    padding: 0;
+//    list-style-type: none;
+//  }
+//  &__suggestion {
+//    cursor: pointer;
+//    padding: 10px 20px;
+//    &--focused {
+//      background-color: #ddd;
+//    }
+//  }
+//}
 
 .phone-input {
   &__dropdown-container {
@@ -81,7 +80,6 @@
 .signup-form-wrapper {
   width: 380px;
   border: 1px solid red;
-  padding: 20px;
 
   .signup-form-text {
     text-align: center;
@@ -116,8 +114,4 @@
     border: 1px solid #aaa;
     border-radius: 4px;
   }
-}
-
-.clear {
-  clear: both;
 }

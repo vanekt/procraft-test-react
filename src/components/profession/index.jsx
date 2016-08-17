@@ -54,7 +54,8 @@ export class Profession extends React.Component {
         const inputProps = {
             placeholder: "Например, парикмахер",
             value,
-            onChange: this.onChange
+            onChange: this.onChange,
+            className: 'form-control' 
         };
 
         return (
