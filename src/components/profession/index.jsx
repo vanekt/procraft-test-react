@@ -1,6 +1,7 @@
 import React from 'react'
 import Autosuggest from 'react-autosuggest'
-import { fetchData, match as matchProfessions } from '../models/profession.jsx'
+import { match as matchProfessions } from './model.jsx'
+import { fetchData } from '../tools/index.jsx'
 
 export class Profession extends React.Component {
     constructor() {
@@ -30,7 +31,8 @@ export class Profession extends React.Component {
                 } else {
                     this.setState({isLoading: false});
                 }
-            });
+            })
+            .catch(error => console.error('Произошла ошибка: ' + error));
     }
 
     onChange(event, { newValue }) {
