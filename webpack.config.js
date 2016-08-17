@@ -10,6 +10,10 @@ module.exports = {
         filename: 'app.bundle.js'
     },
     devtool: 'source-map',
+    debug: true,
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',

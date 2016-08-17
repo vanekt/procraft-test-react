@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Profession } from './components/profession/index.jsx'
+import { Profession } from './components/profession'
 import './main.scss'
 
 class App extends React.Component {
