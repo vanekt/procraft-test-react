@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Profession } from './components/profession'
+import { Phone } from './components/phone'
 import './main.scss'
 
 class App extends React.Component {
@@ -9,6 +10,7 @@ class App extends React.Component {
         return (
             <div>
                 <Profession />
+                <Phone />
             </div>
         )
     }

@@ -20,7 +20,8 @@ module.exports = {
             template: './src/index.html'
         }),
         new CopyWebpackPlugin([
-            { from: 'src/**/*.json', to: 'json', flatten: true }
+            { from: 'src/**/*.json', to: 'json', flatten: true },
+            { context: 'src/components', from: '**/*.png', to: 'img' }
         ])
     ],
     module: {

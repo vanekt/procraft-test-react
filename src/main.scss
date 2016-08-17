@@ -53,3 +53,18 @@ body {
     }
   }
 }
+
+
+.dropdown-container {
+  &.show > .dropdown-list {
+    display: block;
+  }
+
+  .dropdown-list {
+    float: left;
+    width: 100%;
+    position: relative;
+    width: 100%;
+    display: none;
+  }
+}
