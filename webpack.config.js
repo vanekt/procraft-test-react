@@ -9,6 +9,7 @@ module.exports = {
         path: './build' ,
         filename: 'app.bundle.js'
     },
+    devtool: 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
@@ -27,7 +28,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: ['style', 'css', 'autoprefixer', 'sass']
+                loaders: ['style', 'css?sourceMap', 'autoprefixer', 'sass?sourceMap']
             }
         ]
     }
