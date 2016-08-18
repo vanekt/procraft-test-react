@@ -1,5 +1,4 @@
 import React from 'react'
-import DropDown from './dropdown'
 import {FormGroup, InputGroup, Button, FormControl, DropdownButton, MenuItem} from 'react-bootstrap'
 
 var countries = [
@@ -20,9 +19,14 @@ export class Phone extends React.Component {
         this.dropDownOnSelectCallback = this.dropDownOnSelectCallback.bind(this);
         this.phoneInputFocus = this.phoneInputFocus.bind(this);
         this.phoneInputBlur = this.phoneInputBlur.bind(this);
+        this.renderDropdownList = this.renderDropdownList.bind(this);
     }
 
     render() {
+        const dropDownTitle = (
+            <img src={"assets/phone/img/" + this.state.selected.img} alt={this.state.selected.name} />
+        );
+
         return (
             <div className="phone-input">
                 <FormGroup>
@@ -30,19 +34,19 @@ export class Phone extends React.Component {
                         <DropdownButton
                             componentClass={InputGroup.Button}
                             id="input-dropdown-addon"
-                            title={<img src="assets/phone/img/32/Russia.png" />}
+                            title={dropDownTitle}
                             className={"phone-dropdown-control" + (this.state.focused ? ' focused' : '')}
                         >
-                            <MenuItem key="1"><img src="assets/phone/img/32/Russia.png" />Россия </MenuItem>
-                            <MenuItem key="2"><img src="assets/phone/img/32/Kazakhstan.png" />Казахстан</MenuItem>
-                            <MenuItem key="3"><img src="assets/phone/img/32/United-Kingdom.png" />Великобритания</MenuItem>
+                            {this.renderDropdownList()}
                         </DropdownButton>
-                        <InputGroup.Addon className={"phone-country-prefix" + (this.state.focused ? ' focused' : '')}>+7</InputGroup.Addon>
+                        <InputGroup.Addon className={"phone-country-prefix" + (this.state.focused ? ' focused' : '')}>
+                            {this.state.selected.phoneCode}
+                        </InputGroup.Addon>
                         <FormControl onFocus={this.phoneInputFocus}
                                      onBlur={this.phoneInputBlur}
                                      className="phone-number-input"
                                      type="text"
-                                     placeholder="123 123" />
+                                     placeholder="495 123-45-67" />
                     </InputGroup>
                 </FormGroup>
             </div>
@@ -60,12 +64,24 @@ export class Phone extends React.Component {
     phoneInputBlur() {
         this.setState({focused: false});
     }
+
+    select(item) {
+        this.setState({ selected: item });
+    }
+
+    renderDropdownList() {
+        var items = [],
+            that = this;
+
+        for (var i = 0; i < countries.length; i++) {
+            var item = countries[i];
+            items.push(
+                <MenuItem key={item.abbr} onClick={this.select.bind(that, item)} >
+                    <img src={'assets/phone/img/' + item.img} alt={item.name} />{item.name}
+                </MenuItem>
+            );
+        }
+
+        return items;
+    }
 }
-
-/*
-
- <DropDown list={countries} selected={this.state.selected} onSelectCallback={this.dropDownOnSelectCallback} />
- <input value={this.state.selected.phoneCode} />
- <input placeholder="929 777 1234" />
-
- */
