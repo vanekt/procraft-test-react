@@ -3,8 +3,10 @@ import {FormGroup, InputGroup, Button, FormControl, DropdownButton, MenuItem} fr
 
 var countries = [
     { abbr: "ru", img: "Russia.png", name: "Россия", phoneCode: "+7" },
+    { abbr: "de", img: "Germany.png", name: "Германия", phoneCode: "+49" },
+    { abbr: "fi", img: "Finland.png", name: "Финляндия", phoneCode: "+358" },
     { abbr: "kz", img: "Kazakhstan.png", name: "Казахстан", phoneCode: "+7" },
-    { abbr: "uk",  img: "United-Kingdom.png", name: "United Kingdom", phoneCode: "+44" }
+    { abbr: "uk",  img: "United-Kingdom.png", name: "Великобритания", phoneCode: "+44" }
 ];
 
 export class Phone extends React.Component {
