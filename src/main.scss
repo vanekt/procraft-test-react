@@ -1,6 +1,9 @@
 @import "components/phone/styles";
 @import "components/profession/styles";
 
+.without-box-shadow {
+  box-shadow: none !important;
+}
 .signup-form-wrapper {
   width: 400px;
   padding: 20px;

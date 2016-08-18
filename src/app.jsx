@@ -18,11 +18,11 @@ class App extends React.Component {
                         <div className="row">
                             <div className="col-xs-6">
                                 <label>Имя</label>
-                                <input className="form-control" name="firstName" />
+                                <input className="form-control without-box-shadow" name="firstName" />
                             </div>
                             <div className="col-xs-6">
                                 <label>Фамилия</label>
-                                <input className="form-control" name="lastName" />
+                                <input className="form-control without-box-shadow" name="lastName" />
                             </div>
                         </div>
                         <div className="row">
