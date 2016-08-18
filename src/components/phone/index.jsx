@@ -1,5 +1,6 @@
 import React from 'react'
-import {FormGroup, InputGroup, Button, FormControl, DropdownButton, MenuItem} from 'react-bootstrap'
+import {FormGroup, InputGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap'
+import FontAwesome from 'react-fontawesome'
 
 var countries = [
     { abbr: "ru", img: "Russia.png", name: "Россия", phoneCode: "+7" },
@@ -26,7 +27,10 @@ export class Phone extends React.Component {
 
     render() {
         const dropDownTitle = (
-            <img src={"assets/phone/img/" + this.state.selected.img} alt={this.state.selected.name} />
+            <div>
+                <img src={"assets/phone/img/" + this.state.selected.img} alt={this.state.selected.name} />
+                <FontAwesome name='angle-down' size="lg" className="custom-caret" />
+            </div>
         );
 
         return (
@@ -38,6 +42,7 @@ export class Phone extends React.Component {
                             id="input-dropdown-addon"
                             title={dropDownTitle}
                             className={"without-box-shadow phone-dropdown-control" + (this.state.focused ? ' focused' : '')}
+                            noCaret={true}
                         >
                             {this.renderDropdownList()}
                         </DropdownButton>
