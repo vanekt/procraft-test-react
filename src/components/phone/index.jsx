@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {FormGroup, InputGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap'
+import {FormGroup, InputGroup, DropdownButton, MenuItem} from 'react-bootstrap'
+import InputElement from 'react-input-mask'
 import FontAwesome from 'react-fontawesome'
 
 var countries = [
@@ -64,14 +65,17 @@ export class Phone extends React.Component {
                                       onClick={this.emulateFocus}>
                         {this.state.selected.phoneCode}
                     </InputGroup.Addon>
-                    <FormControl onFocus={this.phoneInputFocus}
-                                 onBlur={this.phoneInputBlur}
-                                 onChange={this.setPhoneNumberState}
-                                 ref={(ref) => this.phoneInput = ref}
-                                 className="phone-number-input without-box-shadow"
-                                 type="text"
-                                 value={this.state.phoneNumberWithoutCode}
-                                 placeholder="495 123-45-67" />
+                    <InputElement
+                        value={this.state.phoneNumberWithoutCode}
+                        ref={(ref) => this.phoneInput = ref}
+                        onFocus={this.phoneInputFocus}
+                        onBlur={this.phoneInputBlur}
+                        onChange={this.setPhoneNumberState}
+                        type="text"
+                        className="phone-number-input without-box-shadow form-control"
+                        placeholder="495 123-45-67"
+                        mask="999 999-99-99"
+                        maskChar="_" />
                 </InputGroup>
                 <input type="hidden" name="phone" value={this.state.phoneNumber} />
             </FormGroup>
@@ -98,7 +102,7 @@ export class Phone extends React.Component {
         var items = [],
             that = this;
 
-        for (var i = 0; i < countries.length; i++) {
+        for (let i = 0; i < countries.length; i++) {
             var item = countries[i];
             items.push(
                 <MenuItem key={item.abbr}
