@@ -2,9 +2,6 @@
   &__input {
     position: relative;
     z-index: 4;
-    &:focus {
-      outline: none;
-    }
   }
 
   &__container {
@@ -13,33 +10,32 @@
     &--open .react-autosuggest__suggestions-container {
       display: block;
       position: absolute;
+      z-index: 3;
       top: 95%;
       width: 100%;
       border: 1px solid #ccc;
-      background-color: #fff;
-      font-family: Helvetica, sans-serif;
-      font-weight: 300;
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
+      border-radius: 0 0 4px 4px;
       border-top-width: 0;
-      z-index: 3;
+      background-color: #fff;
     }
   }
 
   &__suggestions-container {
     display: none;
   }
+
   &__suggestions-list {
     margin: 0;
     padding: 0;
     list-style-type: none;
   }
+
   &__suggestion {
     cursor: pointer;
     padding: 10px;
     overflow: hidden;
     &--focused {
-      background-color: #ddd;
+      background-color: #e6e6e6;
     }
   }
 }
