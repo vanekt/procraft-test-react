@@ -5,11 +5,11 @@ import InputElement from 'react-input-mask'
 import FontAwesome from 'react-fontawesome'
 
 var countries = [
-    { abbr: "ru", img: "Russia.png", name: "Россия", phoneCode: "+7" },
-    { abbr: "de", img: "Germany.png", name: "Германия", phoneCode: "+49" },
-    { abbr: "fi", img: "Finland.png", name: "Финляндия", phoneCode: "+358" },
-    { abbr: "kz", img: "Kazakhstan.png", name: "Казахстан", phoneCode: "+7" },
-    { abbr: "uk",  img: "United-Kingdom.png", name: "Великобритания", phoneCode: "+44" }
+    { abbr: "ru", img: "Russia.png", name: "Россия", phoneCode: "+7", phoneMask: "999 999-99-99" },
+    { abbr: "de", img: "Germany.png", name: "Германия", phoneCode: "+49", phoneMask: "999 999-99-99" },
+    { abbr: "fi", img: "Finland.png", name: "Финляндия", phoneCode: "+358", phoneMask: "999 999-99-99" },
+    { abbr: "kz", img: "Kazakhstan.png", name: "Казахстан", phoneCode: "+7", phoneMask: "999 999-99-99" },
+    { abbr: "uk",  img: "United-Kingdom.png", name: "Великобритания", phoneCode: "+44", phoneMask: "999 999-99-99" }
 ];
 
 export class Phone extends React.Component {
@@ -74,7 +74,7 @@ export class Phone extends React.Component {
                         type="text"
                         className="phone-number-input without-box-shadow form-control"
                         placeholder="495 123-45-67"
-                        mask="999 999-99-99"
+                        mask={this.state.selected.phoneMask}
                         maskChar="_" />
                 </InputGroup>
                 <input type="hidden" name="phone" value={this.state.phoneNumber} />
