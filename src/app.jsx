@@ -7,6 +7,12 @@ import './main.scss'
 
 class App extends React.Component {
 
+    constructor() {
+        super();
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
     render() {
         return (
             <div className="container-fluid">
@@ -14,7 +20,7 @@ class App extends React.Component {
                     <p className="signup-form-text">
                         <strong>Зарегистрируйтесь</strong> и начните продавать услуги через интернет сегодня
                     </p>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <div className="row">
                             <div className="col-xs-6 first-name-wrapper">
                                 <label>Имя</label>
@@ -46,6 +52,11 @@ class App extends React.Component {
                 </div>
             </div>
         )
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log('The form was submitted...');
     }
 }
 
