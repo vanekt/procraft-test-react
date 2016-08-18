@@ -78,7 +78,8 @@ function getSuggestionValue(suggestion) {
     return suggestion.name;
 }
 
-function renderSuggestion(suggestion) {
+function renderSuggestion(suggestion, query) {
+    console.log(query); // TODO: highlight query in suggestion
     return (
         <span>{suggestion.name}</span>
     );
