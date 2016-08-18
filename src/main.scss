@@ -3,6 +3,7 @@
 
 .without-box-shadow {
   box-shadow: none !important;
+  height: 40px;
 }
 .signup-form-wrapper {
   width: 400px;
@@ -11,5 +12,35 @@
   .signup-form-text {
     text-align: center;
     padding: 0 20px;
+  }
+
+  label {
+    text-transform: uppercase;
+    color: #bbb;
+    font-weight: 500;
+    font-size: 0.9em;
+    margin-top: 2em;
+  }
+}
+
+.first-name-wrapper {
+  padding-right: 5px !important;
+}
+
+.last-name-wrapper {
+  padding-left: 5px !important;
+}
+
+.signup-form-submit-button__wrapper {
+  text-align: center;
+  padding-top: 2em;
+  button {
+    background-color: #0880fd;
+    color: #fff;
+    padding: 9px 15px;
+    border: none;
+    &:hover {
+      background-color: #337ab7;
+    }
   }
 }

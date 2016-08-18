@@ -37,16 +37,16 @@ export class Phone extends React.Component {
                             componentClass={InputGroup.Button}
                             id="input-dropdown-addon"
                             title={dropDownTitle}
-                            className={"phone-dropdown-control" + (this.state.focused ? ' focused' : '')}
+                            className={"without-box-shadow phone-dropdown-control" + (this.state.focused ? ' focused' : '')}
                         >
                             {this.renderDropdownList()}
                         </DropdownButton>
-                        <InputGroup.Addon className={"phone-country-prefix" + (this.state.focused ? ' focused' : '')}>
+                        <InputGroup.Addon className={"without-box-shadow phone-country-prefix" + (this.state.focused ? ' focused' : '')}>
                             {this.state.selected.phoneCode}
                         </InputGroup.Addon>
                         <FormControl onFocus={this.phoneInputFocus}
                                      onBlur={this.phoneInputBlur}
-                                     className="phone-number-input"
+                                     className="phone-number-input without-box-shadow"
                                      type="text"
                                      placeholder="495 123-45-67" />
                     </InputGroup>

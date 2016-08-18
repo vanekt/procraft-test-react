@@ -16,11 +16,11 @@ class App extends React.Component {
                     </p>
                     <form>
                         <div className="row">
-                            <div className="col-xs-6">
+                            <div className="col-xs-6 first-name-wrapper">
                                 <label>Имя</label>
                                 <input className="form-control without-box-shadow" name="firstName" />
                             </div>
-                            <div className="col-xs-6">
+                            <div className="col-xs-6 last-name-wrapper">
                                 <label>Фамилия</label>
                                 <input className="form-control without-box-shadow" name="lastName" />
                             </div>
@@ -37,7 +37,11 @@ class App extends React.Component {
                                 <Phone />
                             </div>
                         </div>
-                        <button>Зарегистрироваться</button>
+                        <div className="row">
+                            <div className="col-xs-12 signup-form-submit-button__wrapper">
+                                <button className="btn btn-primary">Зарегистрироваться</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
