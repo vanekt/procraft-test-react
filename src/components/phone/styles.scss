@@ -1,0 +1,27 @@
+.phone-dropdown-control {
+  padding: 4px 12px;
+  img {
+    width: 24px;
+  }
+  &.focused {
+    border-color: #66afe9;
+  }
+}
+
+.phone-country-prefix {
+  border-right: 0;
+  padding-right: 0;
+  background-color: #fff;
+  &.focused {
+    border-color: #66afe9;
+  }
+}
+
+.phone-number-input {
+  border-left: 0;
+  padding-left: 5px;
+  &:focus {
+    border-left: 0;
+    box-shadow: none;
+  }
+}
