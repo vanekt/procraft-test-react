@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import {FormGroup, InputGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap'
 import FontAwesome from 'react-fontawesome'
 
@@ -14,6 +15,7 @@ export class Phone extends React.Component {
     constructor() {
         super();
 
+        this.phoneInput = null;
         this.state = {
             selected: countries[0],
             focused: false,
@@ -25,6 +27,7 @@ export class Phone extends React.Component {
         this.phoneInputBlur = this.phoneInputBlur.bind(this);
         this.renderDropdownList = this.renderDropdownList.bind(this);
         this.toggleOpenedState = this.toggleOpenedState.bind(this);
+        this.emulateFocus = this.emulateFocus.bind(this);
     }
 
     render() {
@@ -48,11 +51,13 @@ export class Phone extends React.Component {
                     >
                         {this.renderDropdownList()}
                     </DropdownButton>
-                    <InputGroup.Addon className={"without-box-shadow phone-country-prefix" + (this.state.focused ? ' focused' : '')}>
+                    <InputGroup.Addon className={"without-box-shadow phone-country-prefix" + (this.state.focused ? ' focused' : '')}
+                                      onClick={this.emulateFocus}>
                         {this.state.selected.phoneCode}
                     </InputGroup.Addon>
                     <FormControl onFocus={this.phoneInputFocus}
                                  onBlur={this.phoneInputBlur}
+                                 ref={(ref) => this.phoneInput = ref}
                                  className="phone-number-input without-box-shadow"
                                  type="text"
                                  placeholder="495 123-45-67" />
@@ -95,5 +100,11 @@ export class Phone extends React.Component {
 
     toggleOpenedState() {
         this.setState({ opened: !this.state.opened });
+    }
+
+    emulateFocus() {
+        if (this.phoneInput !== null) {
+            ReactDOM.findDOMNode(this.phoneInput).focus();
+        }
     }
 }
