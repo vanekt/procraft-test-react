@@ -13,20 +13,38 @@ export class Phone extends React.Component {
         super();
 
         this.state = {
-            selected: countries[0]
+            selected: countries[0],
+            focused: false
         };
 
         this.dropDownOnSelectCallback = this.dropDownOnSelectCallback.bind(this);
+        this.phoneInputFocus = this.phoneInputFocus.bind(this);
+        this.phoneInputBlur = this.phoneInputBlur.bind(this);
     }
 
     render() {
         return (
             <div className="phone-input">
-                <DropDown list={countries} selected={this.state.selected} onSelectCallback={this.dropDownOnSelectCallback} />
-                <input value={this.state.selected.phoneCode} />
-                <input placeholder="929 777 1234" />
-
-                
+                <FormGroup>
+                    <InputGroup>
+                        <DropdownButton
+                            componentClass={InputGroup.Button}
+                            id="input-dropdown-addon"
+                            title={<img src="assets/phone/img/32/Russia.png" />}
+                            className={"phone-dropdown-control" + (this.state.focused ? ' focused' : '')}
+                        >
+                            <MenuItem key="1"><img src="assets/phone/img/32/Russia.png" />Россия </MenuItem>
+                            <MenuItem key="2"><img src="assets/phone/img/32/Kazakhstan.png" />Казахстан</MenuItem>
+                            <MenuItem key="3"><img src="assets/phone/img/32/United-Kingdom.png" />Великобритания</MenuItem>
+                        </DropdownButton>
+                        <InputGroup.Addon className={"phone-country-prefix" + (this.state.focused ? ' focused' : '')}>+7</InputGroup.Addon>
+                        <FormControl onFocus={this.phoneInputFocus}
+                                     onBlur={this.phoneInputBlur}
+                                     className="phone-number-input"
+                                     type="text"
+                                     placeholder="123 123" />
+                    </InputGroup>
+                </FormGroup>
             </div>
         );
     }
@@ -34,4 +52,20 @@ export class Phone extends React.Component {
     dropDownOnSelectCallback(item) {
         this.setState({selected: item});
     }
+
+    phoneInputFocus() {
+        this.setState({focused: true});
+    }
+
+    phoneInputBlur() {
+        this.setState({focused: false});
+    }
 }
+
+/*
+
+ <DropDown list={countries} selected={this.state.selected} onSelectCallback={this.dropDownOnSelectCallback} />
+ <input value={this.state.selected.phoneCode} />
+ <input placeholder="929 777 1234" />
+
+ */

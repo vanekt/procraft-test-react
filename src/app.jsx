@@ -37,26 +37,6 @@ class App extends React.Component {
                                 <Phone />
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col-xs-12">
-                                <label>Телефон</label>
-                                <FormGroup>
-                                    <InputGroup>
-                                        <DropdownButton
-                                            componentClass={InputGroup.Button}
-                                            id="input-dropdown-addon"
-                                            title={<img src="assets/phone/img/32/Russia.png" />}
-                                        >
-                                            <MenuItem key="1">Item</MenuItem>
-                                            <MenuItem key="2">Item</MenuItem>
-                                            <MenuItem key="3">Item</MenuItem>
-                                        </DropdownButton>
-                                        <InputGroup.Addon>+7</InputGroup.Addon>
-                                        <FormControl type="text" placeholder="123 123" />
-                                    </InputGroup>
-                                </FormGroup>
-                            </div>
-                        </div>
                         <button>Зарегистрироваться</button>
                     </form>
                 </div>
