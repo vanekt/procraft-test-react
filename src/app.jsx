@@ -10,7 +10,9 @@ class App extends React.Component {
     constructor() {
         super();
 
+        this.isDisabledSubmit = false;
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.disableSubmitHandler = this.disableSubmitHandler.bind(this);
     }
 
     render() {
@@ -34,7 +36,7 @@ class App extends React.Component {
                         <div className="row">
                             <div className="col-xs-12">
                                 <label>Профессия</label>
-                                <Profession />
+                                <Profession disableSubmitHandler={this.disableSubmitHandler} />
                             </div>
                         </div>
                         <div className="row">
@@ -55,8 +57,14 @@ class App extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();
-        console.log('The form was submitted...');
+        if (this.state.isDisabledSubmit) {
+            e.preventDefault();
+            this.setState({isDisabledSubmit: false});
+        }
+    }
+
+    disableSubmitHandler() {
+        this.setState({isDisabledSubmit: true});
     }
 }
 

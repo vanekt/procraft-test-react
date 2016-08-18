@@ -45,7 +45,10 @@ export class Profession extends React.Component {
         this.loadSuggestions(suggestionValue);
     }
 
-    onSuggestionsUpdateRequested({ value }) {
+    onSuggestionsUpdateRequested({ value, reason }) {
+        if ('enter' === reason) {
+            this.props.disableSubmitHandler();            
+        }
         this.loadSuggestions(value);
     }
 
