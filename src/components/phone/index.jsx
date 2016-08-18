@@ -19,7 +19,9 @@ export class Phone extends React.Component {
         this.state = {
             selected: countries[0],
             focused: false,
-            opened: false
+            opened: false,
+            phoneNumber: '',
+            phoneNumberWithoutCode: ''
         };
 
         this.dropDownOnSelectCallback = this.dropDownOnSelectCallback.bind(this);
@@ -28,6 +30,12 @@ export class Phone extends React.Component {
         this.renderDropdownList = this.renderDropdownList.bind(this);
         this.toggleOpenedState = this.toggleOpenedState.bind(this);
         this.emulateFocus = this.emulateFocus.bind(this);
+        this.setPhoneNumber = this.setPhoneNumber.bind(this);
+        this.setPhoneNumberState = this.setPhoneNumberState.bind(this);
+    }
+
+    componentWillMount() {
+        this.setPhoneNumber();
     }
 
     render() {
@@ -58,11 +66,14 @@ export class Phone extends React.Component {
                     </InputGroup.Addon>
                     <FormControl onFocus={this.phoneInputFocus}
                                  onBlur={this.phoneInputBlur}
+                                 onChange={this.setPhoneNumberState}
                                  ref={(ref) => this.phoneInput = ref}
                                  className="phone-number-input without-box-shadow"
                                  type="text"
+                                 value={this.state.phoneNumberWithoutCode}
                                  placeholder="495 123-45-67" />
                 </InputGroup>
+                <input type="hidden" name="phone" value={this.state.phoneNumber} />
             </FormGroup>
         );
     }
@@ -90,7 +101,9 @@ export class Phone extends React.Component {
         for (var i = 0; i < countries.length; i++) {
             var item = countries[i];
             items.push(
-                <MenuItem key={item.abbr} onClick={this.select.bind(that, item)} className="phone-dropdown-control__item">
+                <MenuItem key={item.abbr}
+                          onClick={this.select.bind(that, item)}
+                          className="phone-dropdown-control__item">
                     <img src={'assets/phone/img/' + item.img} alt={item.name} />{item.name}
                 </MenuItem>
             );
@@ -107,5 +120,16 @@ export class Phone extends React.Component {
         if (this.phoneInput !== null) {
             ReactDOM.findDOMNode(this.phoneInput).focus();
         }
+    }
+
+    setPhoneNumberState(e) {
+        this.setState({ phoneNumberWithoutCode: e.target.value }, () => {
+            this.setPhoneNumber();
+        });
+    }
+
+    setPhoneNumber() {
+        const phoneNumber = this.state.selected.phoneCode + this.state.phoneNumberWithoutCode;
+        this.setState({phoneNumber: phoneNumber});
     }
 }
