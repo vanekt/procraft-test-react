@@ -6,6 +6,14 @@
   &.focused {
     border-color: #66afe9;
   }
+  &__item {
+    > a {
+      padding: 3px 12px !important;
+    }
+    img {
+      padding-right: 5px;
+    }
+  }
 }
 
 .phone-country-prefix {

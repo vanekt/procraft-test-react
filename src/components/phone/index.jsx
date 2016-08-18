@@ -78,7 +78,7 @@ export class Phone extends React.Component {
         for (var i = 0; i < countries.length; i++) {
             var item = countries[i];
             items.push(
-                <MenuItem key={item.abbr} onClick={this.select.bind(that, item)} >
+                <MenuItem key={item.abbr} onClick={this.select.bind(that, item)} className="phone-dropdown-control__item">
                     <img src={'assets/phone/img/' + item.img} alt={item.name} />{item.name}
                 </MenuItem>
             );
