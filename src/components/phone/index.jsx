@@ -48,6 +48,7 @@ export class Phone extends React.Component {
                         className={"without-box-shadow phone-dropdown-control" + (this.state.focused ? ' focused' : '')}
                         noCaret={true}
                         onToggle={this.toggleOpenedState}
+                        onSelect={this.emulateFocus}
                     >
                         {this.renderDropdownList()}
                     </DropdownButton>
