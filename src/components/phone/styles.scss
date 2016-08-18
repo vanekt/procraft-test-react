@@ -1,5 +1,6 @@
 .phone-dropdown-control {
   padding: 4px 12px;
+  background-color: #f9f9f9;
   img {
     width: 24px;
   }
@@ -18,7 +19,9 @@
 
 .phone-country-prefix {
   border-right: 0;
+  border-left: 0;
   padding-right: 0;
+  font-size: 1.2em;
   background-color: #fff;
   &.focused {
     border-color: #66afe9;
@@ -27,7 +30,7 @@
 
 .phone-number-input {
   border-left: 0;
-  padding-left: 5px;
+  font-size: 1.2em;
   &:focus {
     border-left: 0;
     box-shadow: none;
