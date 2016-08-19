@@ -23,7 +23,7 @@ export class Profession extends React.Component {
         });
 
         fetchData('json/professions.json')
-            .then(response => JSON.parse(response)['items'])
+            .then(response => JSON.parse(response))
             .then(items => matchProfessions(value, items))
             .then(suggestions => {
                 if (value === this.state.value) {
