@@ -29,11 +29,13 @@
   &__submit-button-wrapper {
     text-align: center;
     padding-top: 2em;
+
     button {
       background-color: #0880fd;
       color: #fff;
       padding: 9px 15px;
       border: none;
+
       &:hover {
         background-color: #337ab7;
       }

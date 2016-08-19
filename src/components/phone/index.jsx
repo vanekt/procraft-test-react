@@ -51,16 +51,20 @@ export class Phone extends React.Component {
         const dropDownTitle = (
             <div>
                 <img src={"assets/phone/img/" + this.state.selected.img} alt={this.state.selected.name} />
-                <FontAwesome name={this.state.opened ? 'angle-up' : 'angle-down'} size="lg" className="custom-caret" />
+                <FontAwesome 
+                    name={this.state.opened ? 'angle-up' : 'angle-down'} 
+                    size="lg" 
+                    className="phone-input__dropdown-control__caret" 
+                />
             </div>
         );
 
         return (
-            <FormGroup>
+            <FormGroup className="phone-input">
                 <InputGroup>
                     <DropdownButton
                         id="phone-dropdown"
-                        className={"signup-form__custom-input phone-dropdown-control" + (this.state.focused ? ' focused' : '')}
+                        className={"signup-form__custom-input phone-input__dropdown-control" + (this.state.focused ? ' phone-input__dropdown-control--focused' : '')}
                         componentClass={InputGroup.Button}
                         title={dropDownTitle}
                         noCaret={true}
@@ -70,14 +74,14 @@ export class Phone extends React.Component {
                         {this.renderDropdownList()}
                     </DropdownButton>
                     <InputGroup.Addon
-                        className={"signup-form__custom-input phone-country-prefix" + (this.state.focused ? ' focused' : '')}
+                        className={"signup-form__custom-input phone-input__country-prefix" + (this.state.focused ? ' phone-input__country-prefix--focused' : '')}
                         onClick={this.emulateFocus}
                     >
                         {this.state.selected.phoneCode}
                     </InputGroup.Addon>
                     <InputElement
                         id="phone"
-                        className="phone-number-input signup-form__custom-input form-control"
+                        className="phone-input__number signup-form__custom-input form-control"
                         ref={(ref) => this.phoneInput = ref}
                         value={this.state.phoneNumberWithoutCode}
                         placeholder="495 123-45-67"
@@ -118,7 +122,7 @@ export class Phone extends React.Component {
                 <MenuItem
                     key={item.abbr}
                     onClick={this.select.bind(this, item)}
-                    className="phone-dropdown-control__item"
+                    className="phone-input__dropdown-control__item"
                 >
                     <img src={'assets/phone/img/' + item.img} alt={item.name} />{item.name}
                 </MenuItem>
