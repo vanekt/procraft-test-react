@@ -79,12 +79,14 @@ function getSuggestionValue(suggestion) {
 }
 
 function renderSuggestion(suggestion, query) {
-    let index = suggestion.name.toLowerCase().indexOf(query.query.toLowerCase()),
-        length = query.query.length,
-        boldPart = suggestion.name.substr(index, length),
-        normalPart = suggestion.name.substr(index + length);
+    let
+        index = suggestion.name.toLowerCase().indexOf(query.query.toLowerCase()),
+        queryLength = query.query.length,
+        boldPart = suggestion.name.substr(index, queryLength),
+        leftPart = suggestion.name.substr(0, index),
+        rightPart = suggestion.name.substr(index + queryLength);
 
     return (
-        <span><strong>{boldPart}</strong>{normalPart}</span>
+        <span>{leftPart}<strong>{boldPart}</strong>{rightPart}</span>
     );
 }
