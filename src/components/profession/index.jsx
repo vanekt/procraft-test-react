@@ -1,7 +1,7 @@
 import React from 'react'
 import Autosuggest from 'react-autosuggest'
 import { match as matchProfessions } from './model'
-import { fetchData } from '../tools'
+import { fetchData } from '../common'
 
 export class Profession extends React.Component {
     constructor() {

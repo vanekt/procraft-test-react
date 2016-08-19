@@ -1,0 +1,7 @@
+[
+    { "abbr": "ru", "img": "Russia.png", "name": "Россия", "phoneCode": "+7", "phoneMask": "999 999-99-99" },
+    { "abbr": "de", "img": "Germany.png", "name": "Германия", "phoneCode": "+49", "phoneMask": "999 999-99-99" },
+    { "abbr": "fi", "img": "Finland.png", "name": "Финляндия", "phoneCode": "+358", "phoneMask": "999 999-99-99" },
+    { "abbr": "kz", "img": "Kazakhstan.png", "name": "Казахстан", "phoneCode": "+7", "phoneMask": "999 999-99-99" },
+    { "abbr": "uk",  "img": "United-Kingdom.png", "name": "Великобритания", "phoneCode": "+44", "phoneMask": "999 999-99-99" }
+]

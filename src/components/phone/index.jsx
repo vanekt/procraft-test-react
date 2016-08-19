@@ -3,14 +3,7 @@ import ReactDOM from 'react-dom'
 import { FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap'
 import InputElement from 'react-input-mask'
 import FontAwesome from 'react-fontawesome'
-
-var countries = [
-    { abbr: "ru", img: "Russia.png", name: "Россия", phoneCode: "+7", phoneMask: "999 999-99-99" },
-    { abbr: "de", img: "Germany.png", name: "Германия", phoneCode: "+49", phoneMask: "999 999-99-99" },
-    { abbr: "fi", img: "Finland.png", name: "Финляндия", phoneCode: "+358", phoneMask: "999 999-99-99" },
-    { abbr: "kz", img: "Kazakhstan.png", name: "Казахстан", phoneCode: "+7", phoneMask: "999 999-99-99" },
-    { abbr: "uk",  img: "United-Kingdom.png", name: "Великобритания", phoneCode: "+44", phoneMask: "999 999-99-99" }
-];
+import { fetchData } from '../common'
 
 export class Phone extends React.Component {
     constructor() {
@@ -18,7 +11,8 @@ export class Phone extends React.Component {
 
         this.phoneInput = null;
         this.state = {
-            selected: countries[0],
+            countries: [],
+            selected: null,
             focused: false,
             opened: false,
             phoneNumber: '',
@@ -36,10 +30,24 @@ export class Phone extends React.Component {
     }
 
     componentWillMount() {
-        this.setPhoneNumber();
+        fetchData('json/countries.json')
+            .then(response => JSON.parse(response))
+            .then(items => {
+                this.setState({
+                    countries: items,
+                    selected: items[0]
+                }, () => {
+                    this.setPhoneNumber();
+                });
+            })
+            .catch(error => console.error('Произошла ошибка: ' + error));
     }
 
     render() {
+        if (null === this.state.selected) {
+            return null;
+        }
+
         const dropDownTitle = (
             <div>
                 <img src={"assets/phone/img/" + this.state.selected.img} alt={this.state.selected.name} />
@@ -104,8 +112,8 @@ export class Phone extends React.Component {
     renderDropdownList() {
         var items = [];
 
-        for (let i = 0; i < countries.length; i++) {
-            var item = countries[i];
+        for (let i = 0; i < this.state.countries.length; i++) {
+            var item = this.state.countries[i];
             items.push(
                 <MenuItem
                     key={item.abbr}
