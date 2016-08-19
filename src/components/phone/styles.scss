@@ -43,8 +43,7 @@
     border-left: 0;
     font-size: 1.2em;
 
-    &:focus {
-      border-left: 0;
+    &--focused {
       box-shadow: none;
     }
   }

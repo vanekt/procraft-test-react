@@ -81,7 +81,7 @@ export class Phone extends React.Component {
                     </InputGroup.Addon>
                     <InputElement
                         id="phone"
-                        className="phone-input__number signup-form__custom-input form-control"
+                        className={"phone-input__number signup-form__custom-input form-control" + (this.state.focused ? ' phone-input__number--focused' : '')}
                         ref={(ref) => this.phoneInput = ref}
                         value={this.state.phoneNumberWithoutCode}
                         placeholder="495 123-45-67"
