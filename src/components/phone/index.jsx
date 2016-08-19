@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {FormGroup, InputGroup, DropdownButton, MenuItem} from 'react-bootstrap'
+import { FormGroup, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap'
 import InputElement from 'react-input-mask'
 import FontAwesome from 'react-fontawesome'
 
@@ -61,8 +61,10 @@ export class Phone extends React.Component {
                     >
                         {this.renderDropdownList()}
                     </DropdownButton>
-                    <InputGroup.Addon className={"without-box-shadow phone-country-prefix" + (this.state.focused ? ' focused' : '')}
-                                      onClick={this.emulateFocus}>
+                    <InputGroup.Addon
+                        className={"without-box-shadow phone-country-prefix" + (this.state.focused ? ' focused' : '')}
+                        onClick={this.emulateFocus}
+                    >
                         {this.state.selected.phoneCode}
                     </InputGroup.Addon>
                     <InputElement
@@ -75,7 +77,8 @@ export class Phone extends React.Component {
                         className="phone-number-input without-box-shadow form-control"
                         placeholder="495 123-45-67"
                         mask={this.state.selected.phoneMask}
-                        maskChar="_" />
+                        maskChar="_"
+                    />
                 </InputGroup>
                 <input type="hidden" name="phone" value={this.state.phoneNumber} />
             </FormGroup>
@@ -105,9 +108,11 @@ export class Phone extends React.Component {
         for (let i = 0; i < countries.length; i++) {
             var item = countries[i];
             items.push(
-                <MenuItem key={item.abbr}
-                          onClick={this.select.bind(that, item)}
-                          className="phone-dropdown-control__item">
+                <MenuItem
+                    key={item.abbr}
+                    onClick={this.select.bind(that, item)}
+                    className="phone-dropdown-control__item"
+                >
                     <img src={'assets/phone/img/' + item.img} alt={item.name} />{item.name}
                 </MenuItem>
             );

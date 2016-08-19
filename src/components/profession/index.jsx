@@ -64,11 +64,13 @@ export class Profession extends React.Component {
 
         return (
             <div className="app-container">
-                <Autosuggest suggestions={suggestions}
-                             onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
-                             getSuggestionValue={getSuggestionValue}
-                             renderSuggestion={renderSuggestion}
-                             inputProps={inputProps} />
+                <Autosuggest
+                    suggestions={suggestions}
+                    onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+                    getSuggestionValue={getSuggestionValue}
+                    renderSuggestion={renderSuggestion}
+                    inputProps={inputProps}
+                />
             </div>
         );
     }
@@ -79,7 +81,7 @@ function getSuggestionValue(suggestion) {
 }
 
 function renderSuggestion(suggestion, query) {
-    let
+    const
         index = suggestion.name.toLowerCase().indexOf(query.query.toLowerCase()),
         queryLength = query.query.length,
         boldPart = suggestion.name.substr(index, queryLength),

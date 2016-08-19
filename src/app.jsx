@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Profession } from './components/profession'
 import { Phone } from './components/phone'
-import {FormGroup, InputGroup, Button, FormControl, DropdownButton, MenuItem} from 'react-bootstrap'
 import './main.scss'
 
 class App extends React.Component {
