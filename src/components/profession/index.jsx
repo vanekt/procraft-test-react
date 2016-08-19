@@ -79,8 +79,12 @@ function getSuggestionValue(suggestion) {
 }
 
 function renderSuggestion(suggestion, query) {
-    console.log(query); // TODO: highlight query in suggestion
+    let index = suggestion.name.toLowerCase().indexOf(query.query.toLowerCase()),
+        length = query.query.length,
+        boldPart = suggestion.name.substr(index, length),
+        normalPart = suggestion.name.substr(index + length);
+
     return (
-        <span>{suggestion.name}</span>
+        <span><strong>{boldPart}</strong>{normalPart}</span>
     );
 }
