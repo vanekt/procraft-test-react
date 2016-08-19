@@ -60,7 +60,7 @@ export class Phone extends React.Component {
                 <InputGroup>
                     <DropdownButton
                         id="phone-dropdown"
-                        className={"without-box-shadow phone-dropdown-control" + (this.state.focused ? ' focused' : '')}
+                        className={"signup-form__custom-input phone-dropdown-control" + (this.state.focused ? ' focused' : '')}
                         componentClass={InputGroup.Button}
                         title={dropDownTitle}
                         noCaret={true}
@@ -70,14 +70,14 @@ export class Phone extends React.Component {
                         {this.renderDropdownList()}
                     </DropdownButton>
                     <InputGroup.Addon
-                        className={"without-box-shadow phone-country-prefix" + (this.state.focused ? ' focused' : '')}
+                        className={"signup-form__custom-input phone-country-prefix" + (this.state.focused ? ' focused' : '')}
                         onClick={this.emulateFocus}
                     >
                         {this.state.selected.phoneCode}
                     </InputGroup.Addon>
                     <InputElement
                         id="phone"
-                        className="phone-number-input without-box-shadow form-control"
+                        className="phone-number-input signup-form__custom-input form-control"
                         ref={(ref) => this.phoneInput = ref}
                         value={this.state.phoneNumberWithoutCode}
                         placeholder="495 123-45-67"
