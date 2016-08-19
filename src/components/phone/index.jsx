@@ -59,10 +59,10 @@ export class Phone extends React.Component {
             <FormGroup>
                 <InputGroup>
                     <DropdownButton
-                        componentClass={InputGroup.Button}
-                        id="input-dropdown-addon"
-                        title={dropDownTitle}
+                        id="phone-dropdown"
                         className={"without-box-shadow phone-dropdown-control" + (this.state.focused ? ' focused' : '')}
+                        componentClass={InputGroup.Button}
+                        title={dropDownTitle}
                         noCaret={true}
                         onToggle={this.toggleOpenedState}
                         onSelect={this.emulateFocus}
@@ -76,16 +76,16 @@ export class Phone extends React.Component {
                         {this.state.selected.phoneCode}
                     </InputGroup.Addon>
                     <InputElement
-                        value={this.state.phoneNumberWithoutCode}
-                        ref={(ref) => this.phoneInput = ref}
-                        onFocus={this.phoneInputFocus}
-                        onBlur={this.phoneInputBlur}
-                        onChange={this.setPhoneNumberState}
-                        type="text"
+                        id="phone"
                         className="phone-number-input without-box-shadow form-control"
+                        ref={(ref) => this.phoneInput = ref}
+                        value={this.state.phoneNumberWithoutCode}
                         placeholder="495 123-45-67"
                         mask={this.state.selected.phoneMask}
                         maskChar="_"
+                        onFocus={this.phoneInputFocus}
+                        onBlur={this.phoneInputBlur}
+                        onChange={this.setPhoneNumberState}
                     />
                 </InputGroup>
                 <input type="hidden" name="phone" value={this.state.phoneNumber} />

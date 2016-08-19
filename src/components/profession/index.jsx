@@ -55,11 +55,12 @@ export class Profession extends React.Component {
     render() {
         const { value, suggestions, isLoading } = this.state;
         const inputProps = {
-            placeholder: "Например, парикмахер",
-            value,
-            onChange: this.onChange,
+            id: 'profession',
+            name: 'profession',
             className: 'form-control react-autosuggest__input without-box-shadow',
-            name: 'profession'
+            value,
+            placeholder: "Например, парикмахер",
+            onChange: this.onChange
         };
 
         return (
