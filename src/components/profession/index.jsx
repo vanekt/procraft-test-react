@@ -64,15 +64,13 @@ export class Profession extends React.Component {
         };
 
         return (
-            <div className="app-container">
-                <Autosuggest
-                    suggestions={suggestions}
-                    onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
-                    getSuggestionValue={getSuggestionValue}
-                    renderSuggestion={renderSuggestion}
-                    inputProps={inputProps}
-                />
-            </div>
+            <Autosuggest
+                suggestions={suggestions}
+                onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={renderSuggestion}
+                inputProps={inputProps}
+            />
         );
     }
 }
