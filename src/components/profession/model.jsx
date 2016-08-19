@@ -13,3 +13,13 @@ export function match(value, professions) {
 function escapeRegexCharacters(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
+
+export function matchByIndex(value, professions) {
+    if (value === '') {
+        return [];
+    }
+
+    return professions.filter(profession => {
+        return profession.name.toLowerCase().indexOf(value.toLowerCase()) !== -1;
+    });
+}
