@@ -102,15 +102,14 @@ export class Phone extends React.Component {
     }
 
     renderDropdownList() {
-        var items = [],
-            that = this;
+        var items = [];
 
         for (let i = 0; i < countries.length; i++) {
             var item = countries[i];
             items.push(
                 <MenuItem
                     key={item.abbr}
-                    onClick={this.select.bind(that, item)}
+                    onClick={this.select.bind(this, item)}
                     className="phone-dropdown-control__item"
                 >
                     <img src={'assets/phone/img/' + item.img} alt={item.name} />{item.name}
