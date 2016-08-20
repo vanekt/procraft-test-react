@@ -1,5 +1,7 @@
 var webpack = require('webpack'),
     path = require('path'),
+    autoprefixer = require('autoprefixer'),
+    cssnano = require('cssnano'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
@@ -36,8 +38,11 @@ module.exports = {
             },
             {
                 test: /\.scss$/i,
-                loader: extractCSS.extract(['css', 'autoprefixer', 'sass'])
+                loader: extractCSS.extract(['css', 'postcss', 'sass'])
             }
         ]
+    },
+    postcss: function () {
+        return [autoprefixer, cssnano];
     }
 };
