@@ -5,6 +5,7 @@ var webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    WebpackUglifyJsPlugin = require('webpack-uglify-js-plugin'),
     extractCSS = new ExtractTextPlugin('styles.css');
 
 module.exports = {
@@ -24,9 +25,29 @@ module.exports = {
             template: './src/index.html'
         }),
         new CopyWebpackPlugin([
-            { from: 'src/**/*.json', to: 'json', flatten: true },
-            { context: 'src/components', from: '**/*.png', to: 'assets' }
+            { 
+                from: 'src/**/*.json', 
+                to: 'json', 
+                flatten: true 
+            },
+            { 
+                context: 'src/components', 
+                from: '**/*.png', 
+                to: 'assets' 
+            }
         ]),
+        new WebpackUglifyJsPlugin({
+            cacheFolder: path.resolve(__dirname, 'tmp/cached_uglify/'),
+            debug: true,
+            minimize: true,
+            sourceMap: true,
+            output: {
+                comments: false
+            },
+            compressor: {
+                warnings: false
+            }
+        }),
         extractCSS
     ],
     module: {

@@ -27,7 +27,8 @@
     "node-sass": "^3.8.0",
     "postcss-loader": "^0.10.1",
     "sass-loader": "^4.0.0",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-uglify-js-plugin": "^1.1.9"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
