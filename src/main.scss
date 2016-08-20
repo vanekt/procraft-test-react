@@ -34,7 +34,7 @@
     button {
       background-color: #0880fd;
       color: #fff;
-      padding: 9px 15px;
+      padding: 11px 16px;
       border: none;
 
       &:hover {
@@ -45,6 +45,9 @@
 
   &__custom-input {
     box-shadow: none !important;
-    height: 40px;
+    height: 44px;
+    &--more-padding {
+      padding: 6px 14px;
+    }
   }
 }

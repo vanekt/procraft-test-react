@@ -28,7 +28,7 @@ class App extends React.Component {
                                 <input
                                     id="first-name"
                                     name="firstName"
-                                    className="form-control signup-form__custom-input"
+                                    className="form-control signup-form__custom-input signup-form__custom-input--more-padding"
                                 />
                             </div>
                             <div className="col-xs-6 signup-form__last-name-wrapper">
@@ -36,7 +36,7 @@ class App extends React.Component {
                                 <input
                                     id="last-name"
                                     name="lastName"
-                                    className="form-control signup-form__custom-input"
+                                    className="form-control signup-form__custom-input signup-form__custom-input--more-padding"
                                 />
                             </div>
                         </div>
