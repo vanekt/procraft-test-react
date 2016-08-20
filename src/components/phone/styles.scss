@@ -33,6 +33,8 @@
     padding-right: 0;
     font-size: 1.2em;
     background-color: #fff;
+    font-family: Tahoma, Verdana, sans-serif;
+    letter-spacing: 1px;
 
     &--focused {
       border-color: #66afe9;
@@ -42,6 +44,9 @@
   &__number {
     border-left: 0;
     font-size: 1.2em;
+    font-family: Tahoma, Verdana, sans-serif;
+    letter-spacing: 1px;
+    padding-left: 8px;
 
     &--focused {
       box-shadow: none;
