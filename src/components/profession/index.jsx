@@ -1,6 +1,5 @@
 import React from 'react'
 import Autosuggest from 'react-autosuggest'
-import { match as matchProfessions } from './model'
 import { fetchData } from '../common'
 
 export class Profession extends React.Component {
@@ -24,7 +23,7 @@ export class Profession extends React.Component {
 
         fetchData('json/professions.json')
             .then(response => JSON.parse(response))
-            .then(items => matchProfessions(value, items))
+            .then(items => match(value, items))
             .then(suggestions => {
                 if (value === this.state.value) {
                     this.setState({isLoading: false, suggestions});
@@ -90,4 +89,30 @@ function renderSuggestion(suggestion, query) {
     return (
         <span>{leftPart}<strong>{boldPart}</strong>{rightPart}</span>
     );
+}
+
+function match(value, professions) {
+    const escapedValue = escapeRegexCharacters(value.trim());
+
+    if (escapedValue === '') {
+        return [];
+    }
+
+    const regex = new RegExp('^' + escapedValue, 'i');
+
+    return professions.filter(profession => regex.test(profession.name));
+}
+
+function escapeRegexCharacters(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function matchByIndex(value, professions) {
+    if (value === '') {
+        return [];
+    }
+
+    return professions.filter(profession => {
+        return profession.name.toLowerCase().indexOf(value.toLowerCase()) !== -1;
+    });
 }
