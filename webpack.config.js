@@ -1,7 +1,9 @@
 var webpack = require('webpack'),
     path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    CopyWebpackPlugin = require('copy-webpack-plugin');
+    CopyWebpackPlugin = require('copy-webpack-plugin'),
+    ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    extractCSS = new ExtractTextPlugin('styles.css');
 
 module.exports = {
     entry: './src/app.jsx',
@@ -22,7 +24,8 @@ module.exports = {
         new CopyWebpackPlugin([
             { from: 'src/**/*.json', to: 'json', flatten: true },
             { context: 'src/components', from: '**/*.png', to: 'assets' }
-        ])
+        ]),
+        extractCSS
     ],
     module: {
         loaders: [
@@ -32,8 +35,8 @@ module.exports = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.scss$/,
-                loaders: ['style', 'css?sourceMap', 'autoprefixer', 'sass?sourceMap']
+                test: /\.scss$/i,
+                loader: extractCSS.extract(['css', 'autoprefixer', 'sass'])
             }
         ]
     }
