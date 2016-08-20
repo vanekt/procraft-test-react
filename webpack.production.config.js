@@ -1,9 +1,11 @@
 var webpack = require('webpack'),
     path = require('path'),
     autoprefixer = require('autoprefixer'),
+    cssnano = require('cssnano'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    WebpackUglifyJsPlugin = require('webpack-uglify-js-plugin'),
     extractCSS = new ExtractTextPlugin('styles.css');
 
 module.exports = {
@@ -12,8 +14,7 @@ module.exports = {
         path: './build' ,
         filename: 'app.bundle.js'
     },
-    devtool: 'source-map',
-    debug: true,
+    debug: false,
     resolve: {
         extensions: ['', '.js', '.jsx']
     },
@@ -23,18 +24,35 @@ module.exports = {
             template: './src/index.html'
         }),
         new CopyWebpackPlugin([
-            {
-                from: 'src/**/*.json',
-                to: 'json',
-                flatten: true
+            { 
+                from: 'src/**/*.json', 
+                to: 'json', 
+                flatten: true 
             },
-            {
-                context: 'src/components',
-                from: '**/*.png',
-                to: 'assets'
+            { 
+                context: 'src/components', 
+                from: '**/*.png', 
+                to: 'assets' 
             }
         ]),
-        extractCSS
+        new WebpackUglifyJsPlugin({
+            cacheFolder: path.resolve(__dirname, 'tmp/cached_uglify/'),
+            debug: false,
+            minimize: true,
+            sourceMap: false,
+            output: {
+                comments: false
+            },
+            compressor: {
+                warnings: false
+            }
+        }),
+        extractCSS,
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        })
     ],
     module: {
         loaders: [
@@ -50,6 +68,6 @@ module.exports = {
         ]
     },
     postcss: function () {
-        return [autoprefixer];
+        return [autoprefixer, cssnano];
     }
 };
